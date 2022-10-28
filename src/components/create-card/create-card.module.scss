@@ -1,0 +1,47 @@
+.createCardBox {
+    display: flex;
+    width: 45rem;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+    z-index: 999;
+    height: 100%;
+    flex-direction: column;
+    padding: 40px 30px;
+
+}
+
+.overlay {
+    display: flex;
+    flex-direction: row-reverse;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(231, 231, 231, 0.568);
+    z-index: 99;
+
+}
+
+.line {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    border-top: 2px solid rgb(207, 207, 207);
+    width: 90%;
+}
+
+.createCardTitle {
+    font-size: 2rem;
+}
+
+.createCardBoxBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.createCardInputText {}
+
+.createCardInputFile {}
