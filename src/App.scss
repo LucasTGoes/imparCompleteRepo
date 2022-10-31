@@ -1,6 +1,23 @@
+body,
+html,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+input::placeholder,
+button,
+input,
+div {
+  font-family: 'Mulish', sans-serif;
+}
+
+
 .App {
   text-align: center;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -32,7 +49,69 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.cardsTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  align-self: center;
+  max-width: 1090px;
+  min-width: 1090px;
+
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(---cor-primaria);
+    text-align: left;
+    font-size: 1.7rem;
+    font-family: Quicksand;
+    letter-spacing: 0px;
+    color: #5F1478;
+    opacity: 1;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+  }
+
+  button {
+    background-color: #E76316;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px #92207242;
+    color: white;
+    height: 48px;
+    min-width: 170px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1)
+    }
+  }
+}
+
+
+.carsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 3rem;
+  grid-row-gap: 3rem;
+  margin: 0 1rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  width: 98vw
 }

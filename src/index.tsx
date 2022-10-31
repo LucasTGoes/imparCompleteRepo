@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CardProvider } from './context/car';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <CardProvider>
+      <App />
+    </CardProvider>
   </React.StrictMode>
 );
 

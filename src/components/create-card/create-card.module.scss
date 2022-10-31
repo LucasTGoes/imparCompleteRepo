@@ -1,19 +1,51 @@
 .createCardBox {
-    display: flex;
-    width: 45rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 33rem;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     opacity: 1;
     z-index: 999;
     height: 100%;
     flex-direction: column;
-    padding: 40px 30px;
+    padding: 40px 50px;
+
+    span {
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        display: flex;
+        justify-self: center;
+        align-self: center;
+        border-top: 1px solid rgb(207, 207, 207);
+        width: 100%;
+    }
+
+    input {
+        background: var(---cor-branco) 0% 0% no-repeat padding-box;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #B9B9B9;
+        border-radius: 8px;
+        opacity: 1;
+        height: 60px;
+        padding-left: 1rem;
+    }
+
+    input::placeholder {
+        text-align: left;
+        font: normal normal 400 15px Muli;
+        letter-spacing: 0px;
+        color: #757575;
+        opacity: 1;
+        font-family: 'Mulish', sans-serif;
+
+    }
 
 }
 
 .overlay {
     display: flex;
     flex-direction: row-reverse;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -23,25 +55,100 @@
 
 }
 
-.line {
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-    display: flex;
-    justify-self: center;
-    align-self: center;
-    border-top: 2px solid rgb(207, 207, 207);
-    width: 90%;
-}
+
 
 .createCardTitle {
-    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(---cor-primaria);
+    text-align: left;
+    font-size: 1.7rem;
+    font-family: Quicksand;
+    letter-spacing: 0px;
+    color: #5F1478;
+    opacity: 1;
+    font-family: 'Mulish', sans-serif;
+    margin-bottom: -2rem
 }
 
 .createCardBoxBody {
+    font-family: Quicksand;
     display: flex;
     flex-direction: column;
 }
 
-.createCardInputText {}
+.createCardInputText {
+    display: flex;
+    flex-direction: column;
 
-.createCardInputFile {}
+    label {
+        text-align: left;
+        font: normal normal bold 15px Muli;
+        letter-spacing: 0px;
+        color: #454545;
+        text-transform: uppercase;
+        opacity: 1;
+        font-family: 'Mulish', sans-serif;
+        margin-bottom: 1rem;
+
+    }
+}
+
+.createCardInputFile {
+    display: flex;
+    flex-direction: column;
+
+
+
+    label {
+        text-align: left;
+        font: normal normal bold 15px Muli;
+        letter-spacing: 0px;
+        color: #454545;
+        text-transform: uppercase;
+        opacity: 1;
+        font-family: 'Mulish', sans-serif;
+        margin-bottom: 1rem;
+        margin-top: 3rem;
+    }
+
+    button {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #E763162E;
+        border: 1px solid #E76316;
+        border-radius: 8px;
+        opacity: 1;
+        color: #E76316;
+        font-size: 1.2rem;
+        font-weight: bold;
+        min-width: 220px;
+        height: 55px;
+        align-self: flex-end;
+        margin-top: -3.7rem;
+        margin-right: 0.4rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #e7631674;
+            color: #FFFFFF;
+        }
+    }
+}
+
+.createCardButton {
+    align-self: end;
+    background-color: #E76316;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px #92207242;
+    color: white;
+    height: 48px;
+    min-width: 170px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}

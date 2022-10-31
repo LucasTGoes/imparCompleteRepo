@@ -1,0 +1,139 @@
+.overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(231, 231, 231, 0.568);
+    z-index: 99;
+    height: 100vh
+}
+
+.closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    box-shadow: 0px 3px 6px #E7631636;
+    background: #E76316 0% 0% no-repeat padding-box;
+    color: white;
+    width: 34px;
+    height: 34px;
+    border: none;
+    z-index: 101;
+    position: fixed;
+    margin-top: -1rem;
+    margin-left: 26rem;
+    cursor: pointer;
+    z-index: 101;
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        width: 30px;
+        height: 30px;
+        transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+        margin: 0px 0px 2px 3px;
+        z-index: 101;
+    }
+}
+
+
+.container {
+    display: flex;
+    position: fixed;
+    z-index: 100;
+    top: 20rem;
+    left: 40%;
+}
+
+.deleteCardBox {
+    flex-direction: column;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    opacity: 1;
+    width: 440px;
+    height: 440px;
+    z-index: 100;
+
+
+    div:first-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        height: 150px;
+        background: #DB25250F 0% 0% no-repeat padding-box;
+        border: 6px solid #E4E4E4;
+        border-radius: 100px;
+        margin-top: 0.5rem
+    }
+
+
+    span {
+        margin-bottom: 1.5rem;
+        display: flex;
+        justify-self: center;
+        align-self: center;
+        border-top: 1px solid rgb(207, 207, 207);
+        width: 80%;
+    }
+
+    h1 {
+        color: #DB2525;
+    }
+
+    h5 {
+        color: #454545;
+        margin-top: -0.5rem
+    }
+
+    .cardButtons {
+        button:first-child {
+            background: #DB2525;
+            box-shadow: 0px 3px 6px #92207242;
+            border-radius: 8px;
+            opacity: 1;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            min-width: 166px;
+            height: 48px;
+            cursor: pointer;
+            margin-right: 1rem;
+            border: none;
+
+            &:hover {
+                background: #c55050;
+            }
+
+
+        }
+
+        button:last-child {
+            background: #FFFFFF;
+            box-shadow: 0px 3px 6px #92207242;
+            border: 1px solid #DB2525;
+            border-radius: 8px;
+            opacity: 1;
+            color: #DB2525;
+            font-size: 1.2rem;
+            font-weight: bold;
+            min-width: 165px;
+            height: 48px;
+            cursor: pointer;
+
+            &:hover {
+                background: #eb8181;
+                color: white;
+            }
+
+        }
+    }
+}
