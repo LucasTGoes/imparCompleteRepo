@@ -55,7 +55,8 @@ export function CardProvider({ children }: CardProps) {
     }
 
     async function getCarsPaginated(offset, limit) {
-        const { data: carsResult } = await httpRequest.get<ICarResponse>(Url + `cars?offset=${offset}&limit=${limit}`)
+
+        const { data: carsResult } = await httpRequest.get<ICarResponse>(Url + `cars?offset=${offset}&limit=${limit}`, { headers: { 'Access-Control-Allow-Origin': '*' } })
         setIsLoading(true)
         setCarList(carsResult)
         setIsSearching(false)
@@ -63,7 +64,7 @@ export function CardProvider({ children }: CardProps) {
     }
 
     async function updateCar(car: ICar) {
-        const { data: carUpdateResult } = await httpRequest.put<ICar>(Url + `cars`, car)
+        const { data: carUpdateResult } = await httpRequest.put<ICar>(Url + `cars`, car ,  { headers: { 'Access-Control-Allow-Origin': '*' }} )
         setCurrentPage(1)
         if (carUpdateResult) {
             setIsOpenedCardCreation(false)
@@ -73,7 +74,7 @@ export function CardProvider({ children }: CardProps) {
     }
 
     async function deleteCar(id: number) {
-        const { data: carDeleteResult } = await httpRequest.delete<ICar>(Url + `cars/${id}`)
+        const { data: carDeleteResult } = await httpRequest.delete<ICar>(Url + `cars/${id}`,   { headers: { 'Access-Control-Allow-Origin': '*' }})
         if (carDeleteResult) {
             setIsOpenedCardCreation(false)
             getCarsPaginated(offset, limit)
@@ -84,7 +85,7 @@ export function CardProvider({ children }: CardProps) {
 
     async function searchCarByName(name: string, offset: number, limit: number) {
         setCurrentPage(1)
-        const { data: carSearchResult } = await httpRequest.get<ICarResponse>(Url + `cars/search?name=${name}&offset=${offset}&limit=${limit}`)
+        const { data: carSearchResult } = await httpRequest.get<ICarResponse>(Url + `cars/search?name=${name}&offset=${offset}&limit=${limit}`,  { headers: { 'Access-Control-Allow-Origin': '*' }} )
         setCarList(carSearchResult)
         setIsSearching(true)
         setIsLoading(false)
