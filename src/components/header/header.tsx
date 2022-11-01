@@ -4,7 +4,7 @@ import styles from './header.module.scss';
 
 export function Header() {
 
-    const { searchCarByName } = useCardContext()
+    const { searchCarByName, isSearching, getCarsPaginated, setIsLoading } = useCardContext()
     const [inputValue, setInputValue] = useState("")
 
     return (
@@ -17,7 +17,15 @@ export function Header() {
             </div>
             <div className={styles.inputSearch}>
                 <input placeholder="Digite aqui a sua busca..." onChange={e => setInputValue(e.target.value)} type="text" />
-                <img onClick={() => searchCarByName(inputValue)} src="images/lupa.png" alt="lupa" />
+                {
+                    !isSearching ?
+                        <img onClick={() => {
+                            if (!inputValue) return
+                            searchCarByName(inputValue, 0, 12),
+                                setIsLoading(true)
+                        }} src="images/lupa.png" alt="lupa" />
+                        : <img onClick={() => { getCarsPaginated(0, 12), setIsLoading(true) }} src="images/close.png" alt="close" />
+                }
             </div>
         </>
     )

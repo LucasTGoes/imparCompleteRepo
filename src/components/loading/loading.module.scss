@@ -1,0 +1,46 @@
+.loadingLogoContent {
+    animation: color 4s infinite ease;
+    background-color: #E76316;
+    border-radius: 50px;
+    width: 220px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    overflow: hidden;
+
+}
+
+.loadingLogo {
+    display: flex;
+    margin-left: -35px;
+    max-width: 50px;
+    animation: go-back 2s infinite linear;
+}
+
+@keyframes go-back {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(255px);
+    }
+}
+
+.gridStack {
+    grid-row: auto;
+    grid-column: auto;
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(238, 238, 238, 0.616);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

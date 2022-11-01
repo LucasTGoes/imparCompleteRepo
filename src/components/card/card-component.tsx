@@ -25,14 +25,14 @@ export function Card({ car }: props) {
                 <div className={styles.card}>
 
                     <div className={styles.imageFrame}>
-                        <img src={car.Photo.Base64} alt="" />
+                        <img src={car.photo.base64} alt="" />
                     </div>
 
-                    <span className={styles.line}>{car.Name}</span>
+                    <span className={styles.line}>{car.name}</span>
 
                     <div className={styles.buttons}>
 
-                        <button onClick={() => { setIsOpenedCardDeletion(true), setDeletionId(car.Id) }}>
+                        <button onClick={() => { setIsOpenedCardDeletion(true), setDeletionId(car.id) }}>
 
                             <span>
                                 <img style={{ marginRight: "8px" }} src="images/trash.png" alt="trash" />

@@ -8,32 +8,43 @@ import styles from "./paginationFooter.module.scss"
 
 export function PaginationFooter() {
 
-    const { carList } = useCardContext()
+    const { carList, getCarsPaginated, setCurrentPage, currentPage } = useCardContext()
 
-    const [currentPage, setCurrentPage] = useState(1)
-
+    const limit = 12
 
     useEffect(() => {
-        console.log({ currentPage })
+        changePage(1)
+    }, [])
 
-    }, [currentPage])
+
+
+
+    async function changePage(pageToChange: number) {
+        const offset = (pageToChange - 1) * limit
+        setCurrentPage(pageToChange)
+        await getCarsPaginated(offset, limit)
+    }
+
+
 
     function pageCount() {
-        return Math.ceil(carList?.totalCars / 10)
+        if (!carList) return 0
+        return Math.ceil(carList?.totalCars / limit)
+
     }
 
     return (
 
         <div className={styles.pagination}>
-            <span onClick={() => setCurrentPage(1)}> {"<<"} </span>
-            <span onClick={() => setCurrentPage(currentPage == 1 ? currentPage : currentPage - 1)}>{"<"}</span>
+            <span onClick={() => changePage(1)}> {"<<"} </span>
+            <span onClick={() => changePage(currentPage == 1 ? currentPage : currentPage - 1)}>{"<"}</span>
             {
                 Array(pageCount()).fill(null).map((page, index) => {
-                    return <span onClick={() => setCurrentPage(index + 1)} className={currentPage == index + 1 ? styles.active : ""}>{index + 1}</span>
+                    return <span onClick={() => changePage(index + 1)} className={currentPage == index + 1 ? styles.active : ""}>{index + 1}</span>
                 })
             }
-            <span onClick={() => setCurrentPage(currentPage == pageCount() ? currentPage : currentPage + 1)}>{">"}</span>
-            <span onClick={() => setCurrentPage(pageCount())}>{">>"}</span>
-        </div>
+            <span onClick={() => changePage(currentPage == pageCount() ? currentPage : currentPage + 1)}>{">"}</span>
+            <span onClick={() => changePage(pageCount())}>{">>"}</span>
+        </div >
     )
 }

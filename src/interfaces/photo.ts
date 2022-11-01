@@ -1,4 +1,4 @@
 export interface IPhoto {
-    Id: number,
-    Base64: string
+    id?: number,
+    base64: string
 }

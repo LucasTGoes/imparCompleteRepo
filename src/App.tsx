@@ -4,6 +4,7 @@ import { Card } from './components/card/card-component';
 import { CreateCard } from './components/create-card/create-card';
 import { DeleteCard } from './components/delete-card/delete-card';
 import { Header } from './components/header/header';
+import LoadingComponent from './components/loading/loading';
 import { PaginationFooter } from './components/paginationFooter/paginationFooter';
 import { useCardContext } from './context/car'
 
@@ -11,9 +12,15 @@ import { useCardContext } from './context/car'
 
 function App() {
 
+
   const { isOpenedCardCreation,
     isOpenedCardDeletion,
-    setIsOpenedCardCreation, carList, setCreationCardType } = useCardContext()
+    setIsOpenedCardCreation,
+    carList,
+    setCreationCardType,
+    isLoading } = useCardContext()
+
+
 
   return (
     <>
@@ -54,6 +61,11 @@ function App() {
           <DeleteCard />
           : ""
       }
+
+      {
+        isLoading ?
+          <LoadingComponent />
+          : ""}
 
 
     </>

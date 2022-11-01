@@ -6,11 +6,11 @@ export interface ICarResponse {
 }
 
 export interface ICar {
-    Id: number,
-    Name: string,
-    Status: string,
-    PhotoId: number
-    Photo: IPhoto
+    id?: number,
+    name: string,
+    status: string,
+    photoId?: number
+    photo: IPhoto
 }
 
 export interface ICreateCard {

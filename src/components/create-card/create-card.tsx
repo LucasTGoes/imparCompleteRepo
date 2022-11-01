@@ -6,11 +6,18 @@ import styles from './create-card.module.scss';
 export function CreateCard() {
 
 
-    const { setIsOpenedCardCreation, creationCardType } = useCardContext()
+    const { setIsOpenedCardCreation,
+        creationCardType,
+        updateCar,
+        createCar,
+        setIsLoading
+    } = useCardContext()
+
     const [newImagePath, setNewImagePath] = useState("")
     const [newImage, setNewImage] = useState("")
 
     const inputElement = useRef<HTMLInputElement>(null);
+    const inputTitleElement = useRef<HTMLInputElement>(null);
 
     const activateInput = () => {
         inputElement.current?.click()
@@ -30,7 +37,28 @@ export function CreateCard() {
         reader.readAsDataURL(image);
     }
 
+    async function createOrUpdateCar() {
+        if (creationCardType.tipo == "Criar") {
+            await createCar({
+                name: inputTitleElement.current.value,
+                status: '',
+                photo: {
+                    base64: newImage
+                }
+            })
+        }
+        else if (creationCardType.tipo == "Atualizar") {
+            await updateCar({
+                ...creationCardType.car,
+                name: inputTitleElement.current.value,
+                photo: {
+                    id: creationCardType.car.id,
+                    base64: newImage ?? creationCardType.car.photo.base64
+                }
+            })
+        }
 
+    }
 
     return (
         <>
@@ -47,7 +75,7 @@ export function CreateCard() {
                     <span></span>
                     <div className={styles.createCardInputText}>
                         <label>DIGITE UM NOME PARA O CARD</label>
-                        <input placeholder='Digite o título' type="text" />
+                        <input ref={inputTitleElement} placeholder='Digite o título' type="text" />
                     </div>
 
                     <div className={styles.createCardInputFile}>
@@ -62,7 +90,7 @@ export function CreateCard() {
 
                     <span></span>
 
-                    <button className={styles.createCardButton}>{creationCardType.tipo} card</button>
+                    <button onClick={() => {createOrUpdateCar(),  setIsLoading(true) }} className={styles.createCardButton}>{creationCardType.tipo} card</button>
 
                 </div>
             </div>
