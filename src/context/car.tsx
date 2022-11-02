@@ -46,27 +46,29 @@ export function CardProvider({ children }: CardProps) {
     const offset = 0
 
     async function createCar(car) {
+        setIsLoading(true)
         const { data: carResponse } = await httpRequest.post<ICar>(Url + `cars`, car)
         if (carResponse) {
             setIsOpenedCardCreation(false)
             getCarsPaginated(offset, limit)
+            setCurrentPage(1)
             setIsLoading(false)
         }
     }
 
     async function getCarsPaginated(offset, limit) {
-
-        const { data: carsResult } = await httpRequest.get<ICarResponse>(Url + `cars?offset=${offset}&limit=${limit}`, { headers: { 'Access-Control-Allow-Origin': '*' } })
         setIsLoading(true)
+        const { data: carsResult } = await httpRequest.get<ICarResponse>(Url + `cars?offset=${offset}&limit=${limit}`)
         setCarList(carsResult)
         setIsSearching(false)
         setIsLoading(false)
     }
 
     async function updateCar(car: ICar) {
-        const { data: carUpdateResult } = await httpRequest.put<ICar>(Url + `cars`, car ,  { headers: { 'Access-Control-Allow-Origin': '*' }} )
-        setCurrentPage(1)
+        setIsLoading(true)
+        const { data: carUpdateResult } = await httpRequest.put<ICar>(Url + `cars`, car)
         if (carUpdateResult) {
+            setCurrentPage(1)
             setIsOpenedCardCreation(false)
             getCarsPaginated(offset, limit)
             setIsLoading(false)
@@ -74,8 +76,10 @@ export function CardProvider({ children }: CardProps) {
     }
 
     async function deleteCar(id: number) {
-        const { data: carDeleteResult } = await httpRequest.delete<ICar>(Url + `cars/${id}`,   { headers: { 'Access-Control-Allow-Origin': '*' }})
+        setIsLoading(true)
+        const { data: carDeleteResult } = await httpRequest.delete<ICar>(Url + `cars/${id}`)
         if (carDeleteResult) {
+            setCurrentPage(1)
             setIsOpenedCardCreation(false)
             getCarsPaginated(offset, limit)
             setIsOpenedCardDeletion(false)
@@ -85,7 +89,7 @@ export function CardProvider({ children }: CardProps) {
 
     async function searchCarByName(name: string, offset: number, limit: number) {
         setCurrentPage(1)
-        const { data: carSearchResult } = await httpRequest.get<ICarResponse>(Url + `cars/search?name=${name}&offset=${offset}&limit=${limit}`,  { headers: { 'Access-Control-Allow-Origin': '*' }} )
+        const { data: carSearchResult } = await httpRequest.get<ICarResponse>(Url + `cars/search?name=${name}&offset=${offset}&limit=${limit}`)
         setCarList(carSearchResult)
         setIsSearching(true)
         setIsLoading(false)

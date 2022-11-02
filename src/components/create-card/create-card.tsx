@@ -9,8 +9,7 @@ export function CreateCard() {
     const { setIsOpenedCardCreation,
         creationCardType,
         updateCar,
-        createCar,
-        setIsLoading
+        createCar
     } = useCardContext()
 
     const [newImagePath, setNewImagePath] = useState("")
@@ -90,7 +89,7 @@ export function CreateCard() {
 
                     <span></span>
 
-                    <button onClick={() => {createOrUpdateCar(),  setIsLoading(true) }} className={styles.createCardButton}>{creationCardType.tipo} card</button>
+                    <button onClick={() => createOrUpdateCar()} className={styles.createCardButton}>{creationCardType.tipo} card</button>
 
                 </div>
             </div>
